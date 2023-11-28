@@ -11,7 +11,7 @@ namespace BasketApp.Domain.Entities
     public class Game
     {
         [Key]
-        public required int Id { get; set; }
+        public int Id { get; set; }
         public  DateTime GameDate { get; set; } = default!;
         public  int Team1ID { get; set; } = default!;
 

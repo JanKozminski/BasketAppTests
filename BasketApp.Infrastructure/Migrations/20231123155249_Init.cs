@@ -125,14 +125,12 @@ namespace BasketApp.Infrastructure.Migrations
                         name: "FK_Games_Teams_Team1ID",
                         column: x => x.Team1ID,
                         principalTable: "Teams",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Games_Teams_Team2ID",
                         column: x => x.Team2ID,
                         principalTable: "Teams",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -194,14 +192,12 @@ namespace BasketApp.Infrastructure.Migrations
                         name: "FK_TeamHistoryLink_HistoricalTeams_HistoricalTeamID",
                         column: x => x.HistoricalTeamID,
                         principalTable: "HistoricalTeams",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_TeamHistoryLink_Teams_TeamID",
                         column: x => x.TeamID,
                         principalTable: "Teams",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -278,14 +274,12 @@ namespace BasketApp.Infrastructure.Migrations
                         name: "FK_PlayerHistoryLink_HistoricalPlayers_HistoricalPlayerID",
                         column: x => x.HistoricalPlayerID,
                         principalTable: "HistoricalPlayers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_PlayerHistoryLink_Players_PlayerID",
                         column: x => x.PlayerID,
                         principalTable: "Players",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(

@@ -27,6 +27,10 @@ namespace BasketApp.Domain.Entities
 
         [ForeignKey("StateID")]
         public virtual State? State { get; set; }
+        public int DivisionID { get; set; } = default!;
+
+        [ForeignKey("DivisionID")]
+        public virtual Division? Division { get; set; }
 
 
 

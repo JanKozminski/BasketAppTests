@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BasketApp.Infrastructure.Migrations
 {
     [DbContext(typeof(BasketAppDbContext))]
-    [Migration("20231121170737_Init")]
+    [Migration("20231123155249_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -349,13 +349,13 @@ namespace BasketApp.Infrastructure.Migrations
                     b.HasOne("BasketApp.Domain.Entities.Team", "Team1")
                         .WithMany()
                         .HasForeignKey("Team1ID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
                     b.HasOne("BasketApp.Domain.Entities.Team", "Team2")
                         .WithMany()
                         .HasForeignKey("Team2ID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
                     b.Navigation("Team1");
@@ -426,13 +426,13 @@ namespace BasketApp.Infrastructure.Migrations
                     b.HasOne("BasketApp.Domain.Entities.HistoricalPlayer", "HistoricalPlayer")
                         .WithMany()
                         .HasForeignKey("HistoricalPlayerID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
                     b.HasOne("BasketApp.Domain.Entities.Player", "Player")
                         .WithMany()
                         .HasForeignKey("PlayerID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
                     b.Navigation("HistoricalPlayer");
@@ -472,13 +472,13 @@ namespace BasketApp.Infrastructure.Migrations
                     b.HasOne("BasketApp.Domain.Entities.HistoricalTeam", "HistoricalTeam")
                         .WithMany()
                         .HasForeignKey("HistoricalTeamID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
                     b.HasOne("BasketApp.Domain.Entities.Team", "Team")
                         .WithMany()
                         .HasForeignKey("TeamID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
                     b.Navigation("HistoricalTeam");

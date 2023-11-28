@@ -6,8 +6,17 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.13" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.7">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+	
   <ItemGroup>
     <ProjectReference Include="..\BasketApp.Application\BasketApp.Application.csproj" />
+    <ProjectReference Include="..\BasketApp.Infrastructure\BasketApp.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

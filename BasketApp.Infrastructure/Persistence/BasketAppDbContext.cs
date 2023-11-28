@@ -10,9 +10,13 @@ namespace BasketApp.Infrastructure.Persistence
 {
     public class BasketAppDbContext : DbContext
     {
+        public BasketAppDbContext(DbContextOptions<BasketAppDbContext> options) : base(options) {
+            
+        }
         public DbSet<Domain.Entities.City> Cities { get; set; }
         public DbSet<Domain.Entities.Conference> Conferences { get; set; }
         public DbSet<Domain.Entities.CurrentCoaches> Coaches { get; set; }
+        public DbSet<Domain.Entities.Division> Divisions { get; set; }
         public DbSet<Domain.Entities.Game> Games { get; set; }
         public DbSet<Domain.Entities.HistoricalPlayer> HistoricalPlayers { get; set; }
         public DbSet<Domain.Entities.HistoricalTeam> HistoricalTeams { get; set; }
@@ -23,10 +27,7 @@ namespace BasketApp.Infrastructure.Persistence
         public DbSet<Domain.Entities.Team> Teams { get; set; }
         public DbSet<Domain.Entities.TeamHistoryLink> TeamHistoryLink { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=BasketAppDb;Trusted_Connection=True;");
-        }
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             
@@ -37,20 +38,39 @@ namespace BasketApp.Infrastructure.Persistence
             modelBuilder.Entity<TeamHistoryLink>()
                .HasKey(phl => new { phl.TeamID, phl.HistoricalTeamID });
 
+           modelBuilder.Entity<TeamHistoryLink>()
+                .HasOne(c => c.Team)
+                .WithMany()
+                .OnDelete(DeleteBehavior.ClientCascade);
+
+            modelBuilder.Entity<TeamHistoryLink>()
+                .HasOne(c => c.HistoricalTeam)
+                .WithMany()
+                .OnDelete(DeleteBehavior.ClientCascade);
+
+            modelBuilder.Entity<PlayerHistoryLink>()
+                .HasOne(c => c.Player)
+                .WithMany()
+                .OnDelete(DeleteBehavior.ClientCascade);
+
+            modelBuilder.Entity<PlayerHistoryLink>()
+                .HasOne(c => c.HistoricalPlayer)
+                .WithMany()
+                .OnDelete(DeleteBehavior.ClientCascade);
+
             modelBuilder.Entity<Game>()
                 .HasOne(g => g.Team1)
                 .WithMany()
                 .HasForeignKey(g => g.Team1ID)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.ClientCascade);
 
             modelBuilder.Entity<Game>()
                 .HasOne(g => g.Team2)
                 .WithMany()
                 .HasForeignKey(g => g.Team2ID)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.ClientCascade);
 
 
-
-        }
+        }   
     }
 }

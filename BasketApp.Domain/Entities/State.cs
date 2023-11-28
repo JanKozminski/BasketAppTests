@@ -10,7 +10,7 @@ namespace BasketApp.Domain.Entities
     public class State
     {
         [Key]
-        public required int Id { get; set; }
+        public  int Id { get; set; }
         public  string Name { get; set; } = default!;
     }
 }

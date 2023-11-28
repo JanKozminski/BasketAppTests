@@ -11,7 +11,7 @@ namespace BasketApp.Domain.Entities
     public class CurrentCoaches
     {
         [Key]
-        public required int Id { get; set; }
+        public  int Id { get; set; }
         public  string Name { get; set; } = default!;
         public string? CoachPhotoPath { get; set; }
         public int TeamID { get; set; } = default!;

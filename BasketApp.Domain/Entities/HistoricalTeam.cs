@@ -11,7 +11,7 @@ namespace BasketApp.Domain.Entities
     public class HistoricalTeam
     {
         [Key]
-        public required int Id { get; set; }
+        public int Id { get; set; }
         public  int TeamID { get; set; } = default!;
 
         [ForeignKey("TeamID")]

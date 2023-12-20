@@ -23,7 +23,7 @@ namespace BasketApp.Domain.Entities
 
         [ForeignKey("ConferenceID")]
         public virtual Conference? Conference { get; set; }
-        public int StateID { get; set; } = default!;
+        public int? StateID { get; set; } = default!;
 
         [ForeignKey("StateID")]
         public virtual State? State { get; set; }

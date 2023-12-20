@@ -16,6 +16,7 @@ namespace BasketApp.Domain.Entities
 
         [ForeignKey("TeamID")]
         public  virtual Team? Team { get; set; }
+        public string? Name { get; set; }
         public  DateTime SeasonStartDate { get; set; } = default!;
         public DateTime? SeasonEndDate { get; set; }
         public string? SuperStarPlayer { get; set; }

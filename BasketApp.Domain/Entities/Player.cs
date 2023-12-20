@@ -18,6 +18,9 @@ namespace BasketApp.Domain.Entities
         [ForeignKey("TeamID")]
         public virtual Team? Team { get; set; }
         public string? PlayerPhotoPath { get; set; }
+        public string? Position { get; set; }
+        public int? Age { get; set; }
+        public string? Height { get; set; }
 
     }
 }

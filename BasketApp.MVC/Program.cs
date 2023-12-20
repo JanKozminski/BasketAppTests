@@ -30,6 +30,24 @@ await divisionSeeder.Seed();
 var conferenceSeeder = scope.ServiceProvider.GetRequiredService<ConferenceSeeder>();
 
 await conferenceSeeder.Seed();
+
+var teamSeeder = scope.ServiceProvider.GetRequiredService<TeamSeeder>();
+
+await teamSeeder.Seed();
+
+var coachSeeder = scope.ServiceProvider.GetRequiredService<CoachSeeder>();
+
+await coachSeeder.Seed();
+
+var playerSeeder = scope.ServiceProvider.GetRequiredService<PlayerSeeder>();
+
+await playerSeeder.Seed();
+
+var historicalTeamSeeder = scope.ServiceProvider.GetRequiredService<HistoricalTeamSeeder>();
+
+await historicalTeamSeeder.Seed();
+
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

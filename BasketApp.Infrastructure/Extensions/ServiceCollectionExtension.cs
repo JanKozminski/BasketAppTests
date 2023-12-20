@@ -22,6 +22,11 @@ namespace BasketApp.Infrastructure.Extensions
             services.AddScoped<ConferenceSeeder>();
             services.AddScoped<CitySeeder>();
             services.AddScoped<DivisionSeeder>();
+            services.AddScoped<TeamSeeder>();
+            services.AddScoped<CoachSeeder>();
+            services.AddScoped<PlayerSeeder>();
+            services.AddScoped<HistoricalTeamSeeder>();
+
         }
     }
 }

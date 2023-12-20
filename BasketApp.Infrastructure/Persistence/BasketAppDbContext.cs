@@ -33,13 +33,13 @@ namespace BasketApp.Infrastructure.Persistence
             
 
             modelBuilder.Entity<PlayerHistoryLink>()
-                .HasKey(phl => new { phl.PlayerID, phl.HistoricalPlayerID });
+                .HasKey(phl => new { phl.HistoricalPlayerID, phl.HistoricalTeamID });
 
             modelBuilder.Entity<TeamHistoryLink>()
-               .HasKey(phl => new { phl.TeamID, phl.HistoricalTeamID });
+               .HasKey(phl => new { phl.HistoricalTeamID, phl.HistoricalPlayerID });
 
            modelBuilder.Entity<TeamHistoryLink>()
-                .HasOne(c => c.Team)
+                .HasOne(c => c.HistoricalPlayer)
                 .WithMany()
                 .OnDelete(DeleteBehavior.ClientCascade);
 
@@ -49,7 +49,7 @@ namespace BasketApp.Infrastructure.Persistence
                 .OnDelete(DeleteBehavior.ClientCascade);
 
             modelBuilder.Entity<PlayerHistoryLink>()
-                .HasOne(c => c.Player)
+                .HasOne(c => c.HistoricalTeam)
                 .WithMany()
                 .OnDelete(DeleteBehavior.ClientCascade);
 

@@ -4,6 +4,7 @@ using BasketApp.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BasketApp.Infrastructure.Migrations
 {
     [DbContext(typeof(BasketAppDbContext))]
-    partial class BasketAppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231203151435_Init3")]
+    partial class Init3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -141,18 +144,23 @@ namespace BasketApp.Infrastructure.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("DraftDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("EndOfCareerDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("PlayerID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("SeasonEndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("SeasonStartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("TeamID")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("PlayerID");
+
+                    b.HasIndex("TeamID");
 
                     b.ToTable("HistoricalPlayers");
                 });
@@ -167,9 +175,6 @@ namespace BasketApp.Infrastructure.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("SeasonEndDate")
@@ -259,21 +264,21 @@ namespace BasketApp.Infrastructure.Migrations
 
             modelBuilder.Entity("BasketApp.Domain.Entities.PlayerHistoryLink", b =>
                 {
+                    b.Property<int>("PlayerID")
+                        .HasColumnType("int");
+
                     b.Property<int>("HistoricalPlayerID")
                         .HasColumnType("int");
 
-                    b.Property<int>("HistoricalTeamID")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("SeasonEndDate")
+                    b.Property<DateTime?>("LinkEndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("SeasonStartDate")
+                    b.Property<DateTime>("LinkStartDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("HistoricalPlayerID", "HistoricalTeamID");
+                    b.HasKey("PlayerID", "HistoricalPlayerID");
 
-                    b.HasIndex("HistoricalTeamID");
+                    b.HasIndex("HistoricalPlayerID");
 
                     b.ToTable("PlayerHistoryLink");
                 });
@@ -337,21 +342,23 @@ namespace BasketApp.Infrastructure.Migrations
 
             modelBuilder.Entity("BasketApp.Domain.Entities.TeamHistoryLink", b =>
                 {
+                    b.Property<int>("TeamID")
+                        .HasColumnType("int")
+                        .HasColumnOrder(0);
+
                     b.Property<int>("HistoricalTeamID")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
 
-                    b.Property<int>("HistoricalPlayerID")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("SeasonEndDate")
+                    b.Property<DateTime?>("LinkEndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("SeasonStartDate")
+                    b.Property<DateTime>("LinkStartDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("HistoricalTeamID", "HistoricalPlayerID");
+                    b.HasKey("TeamID", "HistoricalTeamID");
 
-                    b.HasIndex("HistoricalPlayerID");
+                    b.HasIndex("HistoricalTeamID");
 
                     b.ToTable("TeamHistoryLink");
                 });
@@ -393,6 +400,14 @@ namespace BasketApp.Infrastructure.Migrations
                         .HasForeignKey("PlayerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("BasketApp.Domain.Entities.HistoricalTeam", "HistoricalTeam")
+                        .WithMany()
+                        .HasForeignKey("TeamID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("HistoricalTeam");
 
                     b.Navigation("Player");
                 });
@@ -444,15 +459,15 @@ namespace BasketApp.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
-                    b.HasOne("BasketApp.Domain.Entities.HistoricalTeam", "HistoricalTeam")
+                    b.HasOne("BasketApp.Domain.Entities.Player", "Player")
                         .WithMany()
-                        .HasForeignKey("HistoricalTeamID")
+                        .HasForeignKey("PlayerID")
                         .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
                     b.Navigation("HistoricalPlayer");
 
-                    b.Navigation("HistoricalTeam");
+                    b.Navigation("Player");
                 });
 
             modelBuilder.Entity("BasketApp.Domain.Entities.Team", b =>
@@ -490,21 +505,21 @@ namespace BasketApp.Infrastructure.Migrations
 
             modelBuilder.Entity("BasketApp.Domain.Entities.TeamHistoryLink", b =>
                 {
-                    b.HasOne("BasketApp.Domain.Entities.HistoricalPlayer", "HistoricalPlayer")
-                        .WithMany()
-                        .HasForeignKey("HistoricalPlayerID")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
-
                     b.HasOne("BasketApp.Domain.Entities.HistoricalTeam", "HistoricalTeam")
                         .WithMany()
                         .HasForeignKey("HistoricalTeamID")
                         .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
-                    b.Navigation("HistoricalPlayer");
+                    b.HasOne("BasketApp.Domain.Entities.Team", "Team")
+                        .WithMany()
+                        .HasForeignKey("TeamID")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
 
                     b.Navigation("HistoricalTeam");
+
+                    b.Navigation("Team");
                 });
 #pragma warning restore 612, 618
         }

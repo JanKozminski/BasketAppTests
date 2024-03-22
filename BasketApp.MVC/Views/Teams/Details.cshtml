@@ -1,0 +1,22 @@
+﻿@model BasketApp.Domain.Entities.HistoricalTeam
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/team-details-styles.css" />
+}
+<div class="card mt-3">
+<div class="details-container">
+    <h2 class="details-title">@Model.Name</h2>
+
+    <div class="details-info">
+        <h4>Informacje</h4>
+        <p>Data rozpoczęcia sezonu: @Model.SeasonStartDate.ToShortDateString()</p>
+        <p>Data zakończenia sezonu: @Model.SeasonEndDate?.ToShortDateString()</p>
+        <p>Gwiazda drużyny: @Model.SuperStarPlayer</p>
+        <div class="details-info-description">
+            <p>Historia: <br /> @Model.Description</p>
+        </div>
+    </div>
+
+    <a href="@Url.Action("HistoricalTeams", "Teams")" class="btn btn-primary">Powrót do listy drużyn</a>
+</div>
+</div>

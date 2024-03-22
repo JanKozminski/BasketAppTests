@@ -25,6 +25,7 @@ namespace BasketApp.Domain.Entities
         public  virtual Team? Team2 { get; set; }
         public  string FinalScore { get; set; } = default!;
         public string? Description { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
 
     }
 }

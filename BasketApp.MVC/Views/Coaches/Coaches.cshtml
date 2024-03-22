@@ -1,0 +1,25 @@
+﻿@model IEnumerable<BasketApp.Domain.Entities.CurrentCoaches>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/coach-styles.css" />
+}
+
+<h2>Lista Trenerów</h2>
+
+<table class="coach-table">
+    <thead>
+        <tr>
+            <th>Imie i Nazwisko</th>
+            <th>Drużyna</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var coach in Model)
+        {
+            <tr>
+                <td>@coach.Name</td>
+                <td>@coach.Team.TeamName</td>
+            </tr>
+        }
+    </tbody>
+</table>

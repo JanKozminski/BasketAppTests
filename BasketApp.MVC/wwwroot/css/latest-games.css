@@ -1,0 +1,22 @@
+﻿main {
+    background-color: #ffffff;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    margin: 20px 20px 20px 20px;
+    padding: 20px;
+}
+
+.description-separator {
+    border-top: 2px solid #dee2e6; 
+    padding-top: 10px; 
+    margin-top: 10px; 
+}
+
+.team-name-link {
+    color: #007bff; 
+    text-decoration: none; 
+}
+
+    .team-name-link:hover {
+        font-size: 110%;
+        color: crimson;
+    }

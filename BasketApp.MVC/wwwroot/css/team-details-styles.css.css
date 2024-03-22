@@ -1,0 +1,58 @@
+﻿.card {
+    margin: 20px;
+    padding: 20px;
+    margin-top: 20px;
+    padding-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: white;
+}
+
+
+
+.details-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.details-title {
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.details-info {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+    .details-info h4 {
+        color: #343a40;
+        margin-bottom: 15px;
+    }
+
+    .details-info p {
+        margin-bottom: 10px;
+        color: #666;
+    }
+
+.details-info-description {
+    font-weight: bold; /* Pogrubienie tekstu */
+    background-color: #e9ecef; /* Jasne tło dla wyodrębnienia */
+    padding: 15px; /* Dodanie wewnętrznego odstępu */
+    border-left: 5px solid #007bff; /* Dodanie lewego bordery wyróżniającego */
+    margin: 20px 0; /* Dodanie zewnętrznego odstępu */
+    border-radius: 5px; /* Lekkie zaokrąglenie rogów */
+}
+
+.details-info-description p {
+        margin-bottom: 0; /* Usunięcie marginesu na dole paragrafu */
+}
+
+
+.back-link:hover {
+        text-decoration: underline; /* Podkreślenie linku przy najechaniu */
+}

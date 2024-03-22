@@ -1,0 +1,36 @@
+﻿@model IEnumerable<BasketApp.Domain.Entities.Game>
+
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/latest-games.css" />
+}
+@{
+    ViewData["Title"] = "Najnowsze Gry";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<a href="@Url.Action("Create", "Game")" class="btn btn-primary mb-3">Stwórz grę</a>
+
+<div class="row">
+    @foreach (var game in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-text">@game.GameDate.ToShortDateString()</p>
+                    <p class="card-text description-separator">
+                    
+                        <a href="@Url.Action("Roster", "Teams", new { id = game.Team1ID })" class="team-name-link">@game.Team1.TeamName</a>
+                        vs
+                        <a href="@Url.Action("Roster", "Teams", new { id = game.Team2ID })" class="team-name-link">@game.Team2.TeamName</a>
+                    
+                    </p>
+                    <p class="card-text description-separator">Wynik: @game.FinalScore</p>
+                    <p class="card-text description-separator">@game.Description</p>
+
+                </div>
+            </div>
+        </div>
+    }
+</div>

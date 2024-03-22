@@ -25,6 +25,7 @@ namespace BasketApp.Infrastructure.Persistence
         public DbSet<Domain.Entities.PlayerHistoryLink> PlayerHistoryLink { get; set; }
         public DbSet<Domain.Entities.State> States { get; set; }
         public DbSet<Domain.Entities.Team> Teams { get; set; }
+        public DbSet<Domain.Entities.Comment> Comments { get; set; }
         public DbSet<Domain.Entities.TeamHistoryLink> TeamHistoryLink { get; set; }
 
         

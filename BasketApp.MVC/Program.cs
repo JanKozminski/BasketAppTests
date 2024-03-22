@@ -1,7 +1,7 @@
-using BasketApp.Infrastructure.Persistence;
-using Microsoft.EntityFrameworkCore;
 using BasketApp.Infrastructure.Extensions;
+using BasketApp.Application.Extensions;
 using BasketApp.Infrastructure.Seeders;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddInfrastructure(builder.Configuration);
+
+builder.Services.AddApplication();
+
+
+
+
 
 
 var app = builder.Build();
@@ -46,6 +52,11 @@ await playerSeeder.Seed();
 var historicalTeamSeeder = scope.ServiceProvider.GetRequiredService<HistoricalTeamSeeder>();
 
 await historicalTeamSeeder.Seed();
+
+var historicalPlayerSeeder = scope.ServiceProvider.GetRequiredService<HistoricalPlayerSeeder>();
+
+await historicalPlayerSeeder.Seed();
+
 
 
 // Configure the HTTP request pipeline.

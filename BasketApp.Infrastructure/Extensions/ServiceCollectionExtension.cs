@@ -1,4 +1,6 @@
-﻿using BasketApp.Infrastructure.Persistence;
+﻿using BasketApp.Domain.Interfaces;
+using BasketApp.Infrastructure.Persistence;
+using BasketApp.Infrastructure.Repositories;
 using BasketApp.Infrastructure.Seeders;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -26,6 +28,14 @@ namespace BasketApp.Infrastructure.Extensions
             services.AddScoped<CoachSeeder>();
             services.AddScoped<PlayerSeeder>();
             services.AddScoped<HistoricalTeamSeeder>();
+            services.AddScoped<HistoricalPlayerSeeder>();
+
+
+            services.AddScoped<IHistoricalTeamRepository, HistoricalTeamRepository>();
+            services.AddScoped<IPlayerRepository, PlayerRepository>();
+            services.AddScoped<ICoachRepository, CoachRepository>();
+            services.AddScoped<ITeamRepository, TeamRepository>();
+            services.AddScoped<IGameRepository, GameRepository>();
 
         }
     }

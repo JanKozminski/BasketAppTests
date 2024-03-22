@@ -1,0 +1,40 @@
+﻿.card {
+    margin: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: white;
+}
+
+.current-teams-table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+}
+
+    .current-teams-table th, .current-teams-table td {
+        padding: 0.75rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+    }
+
+    .current-teams-table th {
+        background-color: #007bff; 
+        color: white;
+    }
+
+    .current-teams-table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+.team-name-link {
+    color: #aa5704;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+    .team-name-link:hover {
+        color: #d47f08;
+        text-shadow: initial;
+        font-size: 106%;
+    }

@@ -1,0 +1,109 @@
+﻿body, h2, h3, h4, h5, h6, p {
+    font-family: 'Open Sans', sans-serif;
+}
+
+h2 {
+    font-size: 45px;
+    padding-bottom: 10px;
+}
+
+
+body {
+    background-color: #f8f9fa; 
+    color: #212529; 
+}
+
+.card {
+    margin: 20px; 
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border-radius: 10px; 
+    background-color: white; 
+}
+
+
+header {
+    background-color: #6c757d; 
+    color: #ffffff; 
+}
+
+nav {
+    background-color: #13161a;
+}
+
+    nav a {
+        color: #adb5bd; 
+        font-size: 20px; 
+        font-weight: bold; 
+        text-decoration: none;
+        padding: 0 15px;
+    }
+
+        nav a:hover {
+            color: #adb5bd; 
+        }
+
+
+main {
+    background-color: #ffffff; 
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); 
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+
+footer {
+    background-color: #adb5bd; 
+    color: #adb5bd; 
+}
+
+
+.btn-primary {
+    background-color: #007bff; 
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0069d9; 
+    border-color: #0062cc;
+}
+
+
+input, textarea, select {
+    border: 1px solid #ced4da; 
+}
+
+    input:focus, textarea:focus, select:focus {
+        border-color: #80bdff; 
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+
+.card-text, p {
+    font-size: 25px; 
+    line-height: 1.6; 
+}
+
+
+.navbar-nav .nav-item .nav-link {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 15px;
+    color: #fffcfc !important;
+}
+.navbar-brand {
+    color: #fffcfc !important;
+    padding-right: 40px;
+    margin-right: 40px;
+}
+
+
+.left-aligned-container .card-body, .left-aligned-container .card-body p {
+    text-align: left;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.active {
+    background-color: #5c5c5c !important;
+}
+

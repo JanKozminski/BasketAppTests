@@ -24,5 +24,8 @@ namespace BasketApp.Domain.Entities
         public DateTime SeasonStartDate { get; set; } = default!;
 
         public DateTime? SeasonEndDate { get; set; } = default!;
+
+        public string Achievements { get; set; } = default!;
+        public string Role { get; set; } = default!;
     }
 }

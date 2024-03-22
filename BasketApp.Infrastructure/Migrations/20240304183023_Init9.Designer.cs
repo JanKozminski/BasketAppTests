@@ -4,6 +4,7 @@ using BasketApp.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BasketApp.Infrastructure.Migrations
 {
     [DbContext(typeof(BasketAppDbContext))]
-    partial class BasketAppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240304183023_Init9")]
+    partial class Init9
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -269,10 +272,6 @@ namespace BasketApp.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Role")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime?>("SeasonEndDate")
                         .HasColumnType("datetime2");
 
@@ -370,31 +369,6 @@ namespace BasketApp.Infrastructure.Migrations
                     b.HasIndex("HistoricalPlayerID");
 
                     b.ToTable("TeamHistoryLink");
-                });
-
-            modelBuilder.Entity("Comment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("GameId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Text")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GameId");
-
-                    b.ToTable("Comment");
                 });
 
             modelBuilder.Entity("BasketApp.Domain.Entities.CurrentCoaches", b =>
@@ -546,22 +520,6 @@ namespace BasketApp.Infrastructure.Migrations
                     b.Navigation("HistoricalPlayer");
 
                     b.Navigation("HistoricalTeam");
-                });
-
-            modelBuilder.Entity("Comment", b =>
-                {
-                    b.HasOne("BasketApp.Domain.Entities.Game", "Game")
-                        .WithMany("Comments")
-                        .HasForeignKey("GameId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Game");
-                });
-
-            modelBuilder.Entity("BasketApp.Domain.Entities.Game", b =>
-                {
-                    b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,0 +1,29 @@
+﻿@model BasketApp.MVC.Models.TeamRosterViewModel
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/roster-styles.css" />
+}
+
+<h2>Roster drużyny: @Model.Team.TeamName</h2>
+
+<table class="roster-table">
+    <thead>
+        <tr>
+            <th>Imię</th>
+            <th>Pozycja</th>
+            <th>Wiek</th>
+            <th>Wzrost</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var player in Model.Players)
+        {
+            <tr>
+                <td>@player.Name</td>
+                <td>@player.Position</td>
+                <td>@player.Age</td>
+                <td>@player.Height</td>
+            </tr>
+        }
+    </tbody>
+</table>

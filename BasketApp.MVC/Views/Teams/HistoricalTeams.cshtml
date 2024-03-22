@@ -1,0 +1,17 @@
+﻿@model IEnumerable<BasketApp.Domain.Entities.HistoricalTeam>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/historical-teams-styles.css" />
+}
+<div class="card mt-3">
+<h2 class="historical-teams-header">Historyczne Drużyny</h2>
+
+<h4>Kliknij w nazwę, aby dowiedzieć się więcej o drużynie!</h4>
+
+<ul class="historical-teams-list">
+    @foreach (var team in Model)
+    {
+        <li><a href="@Url.Action("Details", "Teams", new { id = team.Id })">@team.Name</a></li>
+    }
+</ul>
+</div>

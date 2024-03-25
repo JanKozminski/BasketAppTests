@@ -40,19 +40,19 @@
     }
 
 .details-info-description {
-    font-weight: bold; /* Pogrubienie tekstu */
-    background-color: #e9ecef; /* Jasne tło dla wyodrębnienia */
-    padding: 15px; /* Dodanie wewnętrznego odstępu */
-    border-left: 5px solid #007bff; /* Dodanie lewego bordery wyróżniającego */
-    margin: 20px 0; /* Dodanie zewnętrznego odstępu */
-    border-radius: 5px; /* Lekkie zaokrąglenie rogów */
+    font-weight: bold; 
+    background-color: #e9ecef; 
+    padding: 15px; 
+    border-left: 5px solid #007bff; 
+    margin: 20px 0; 
+    border-radius: 5px;
 }
 
 .details-info-description p {
-        margin-bottom: 0; /* Usunięcie marginesu na dole paragrafu */
+        margin-bottom: 0; 
 }
 
 
 .back-link:hover {
-        text-decoration: underline; /* Podkreślenie linku przy najechaniu */
+        text-decoration: underline; 
 }

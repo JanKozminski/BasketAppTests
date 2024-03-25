@@ -1,0 +1,26 @@
+﻿@model IEnumerable<BasketApp.Domain.Entities.Comment>
+
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/partial-comment-styles.css" />
+}
+
+<div class="comments-container">
+    @if (Model != null && Model.Any())
+    {
+        foreach (var comment in Model)
+        {
+            <br>
+            <div class="comment-item">
+                <span class="comment-text">@comment.Text</span>
+                <br>
+                <span class="comment-date">@comment.CreatedAt.ToString("g")</span>
+            </div>
+            <br>
+        }
+    }
+    else
+    {
+        <p>Brak komentarzy.</p>
+    }
+</div>

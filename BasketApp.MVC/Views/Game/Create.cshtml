@@ -1,4 +1,8 @@
-﻿@section Styles {
+﻿@using BasketApp.Application.GameExtensions.Commands.CreateGame;
+
+@model CreateGameCommand
+
+@section Styles {
     <link rel="stylesheet" href="~/css/game-form.css" />
 }
 
@@ -7,30 +11,40 @@
     ViewData["Title"] = "Stwórz Gre";
 }
 
+@if (!ViewData.ModelState.IsValid && ViewData.ModelState[""].Errors.Count > 0)
+{
+    <div class="alert alert-danger" role="alert">
+        @foreach (var error in ViewData.ModelState[""].Errors)
+        {
+            @error.ErrorMessage <br />
+        }
+    </div>
+}
+
 <h1>@ViewData["Title"]</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create" method="post">
             <div class="form-group mb-3">
-                <label class="control-label" for="GameDate">Data Gry</label>
-                <input class="form-control" type="date" id="GameDate" name="GameDate" required>
+                <label class="control-label" asp-for="GameDate">Data Gry</label>
+                <input class="form-control" type="date" asp-for="GameDate" required>
             </div>
             <div class="form-group mb-3">
-                <label class="control-label" for="Team1ID">Drużyna 1</label>
-                <select class="form-control" id="Team1ID" name="Team1ID" asp-items="@ViewBag.Team1ID" required></select>
+                <label class="control-label" asp-for="Team1ID">Drużyna 1</label>
+                <select class="form-control" asp-for="Team1ID" asp-items="@ViewBag.Team1ID" required></select>
             </div>
             <div class="form-group mb-3">
-                <label class="control-label" for="Team2ID">Drużyna 2</label>
-                <select class="form-control" id="Team2ID" name="Team2ID" asp-items="@ViewBag.Team2ID" required></select>
+                <label class="control-label" asp-for="Team2ID">Drużyna 2</label>
+                <select class="form-control" asp-for="Team2ID" asp-items="@ViewBag.Team2ID" required></select>
             </div>
             <div class="form-group mb-3">
-                <label class="control-label" for="FinalScore">Wynik końcowy</label>
-                <input class="form-control" type="text" id="FinalScore" name="FinalScore">
+                <label class="control-label" asp-for="FinalScore">Wynik końcowy</label>
+                <input class="form-control" type="text" asp-for="FinalScore" required>
             </div>
             <div class="form-group mb-3">
-                <label for="Description">Opis</label>
-                <textarea class="form-control" id="Description" name="Description"></textarea>
+                <label asp-for="Description">Opis</label>
+                <textarea class="form-control" asp-for="Description"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Stwórz gre</button>
         </form>

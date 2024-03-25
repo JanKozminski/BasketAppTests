@@ -1,5 +1,7 @@
 ﻿@section Styles {
     <link rel="stylesheet" href="~/css/choose-team-styles.css" />
+    <link rel="icon" type="image/png" href="~/images/book-30.png">
+    <link rel="icon" type="image/png" href="~/images/team-30.png">
 }
 
 <div class="container mt-5">
@@ -8,7 +10,7 @@
         <div class="col-md-6">
             <div class="card" style="cursor:pointer;" onclick="location.href='@Url.Action("CurrentTeams", "Teams")'">
                 <div class="card-body">
-                    <h5 class="card-title">Aktualne drużyny</h5>
+                    <h5 class="card-title">Aktualne drużyny <img src="~/images/team-30.png" alt="drużyna pięcioosobowa" style="width: 30px; height: 30px;"></h5>
                     <p class="card-text">Poznaj aktualne drużyny i ich składy.</p>
                 </div>
             </div>
@@ -16,7 +18,7 @@
         <div class="col-md-6">
             <div class="card" style="cursor:pointer;" onclick="location.href='@Url.Action("HistoricalTeams", "Teams")'">
                 <div class="card-body">
-                    <h5 class="card-title">Historyczne drużyny</h5>
+                    <h5 class="card-title">Historyczne drużyny <img src="~/images/book-30.png" alt="książka" style="width: 30px; height: 30px;"></h5>
                     <p class="card-text">Odkryj historię i legendy koszykówki.</p>
                 </div>
             </div>

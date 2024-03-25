@@ -2,6 +2,7 @@
 using BasketApp.Infrastructure.Persistence;
 using BasketApp.Infrastructure.Repositories;
 using BasketApp.Infrastructure.Seeders;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +21,10 @@ namespace BasketApp.Infrastructure.Extensions
             services.AddDbContext<BasketAppDbContext>(options => options.UseSqlServer(
                 configuration.GetConnectionString("BasketApp")));
 
+
+            services.AddDefaultIdentity<IdentityUser>()
+                .AddEntityFrameworkStores<BasketAppDbContext>();
+
             services.AddScoped<StateSeeder>();
             services.AddScoped<ConferenceSeeder>();
             services.AddScoped<CitySeeder>();
@@ -36,6 +41,7 @@ namespace BasketApp.Infrastructure.Extensions
             services.AddScoped<ICoachRepository, CoachRepository>();
             services.AddScoped<ITeamRepository, TeamRepository>();
             services.AddScoped<IGameRepository, GameRepository>();
+            services.AddScoped<ICommentRepository, CommentRepository>();
 
         }
     }

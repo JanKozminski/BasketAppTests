@@ -2,16 +2,36 @@
 
 @section Styles {
     <link rel="stylesheet" href="~/css/team-details-styles.css" />
+    <link rel="icon" type="image/png" href="~/images/star-30.png">
+    <link rel="icon" type="image/png" href="~/images/calender-32.png">
+    <link rel="icon" type="image/png" href="~/images/progress-34.png">
 }
+
+<head>
+    <style>
+        .gwiazda {
+            margin-right: 20px;
+        }
+    </style>
+</head>
 <div class="card mt-3">
 <div class="details-container">
-    <h2 class="details-title">@Model.Name</h2>
+        <h2 class="details-title" style="border-bottom: 1px solid black; padding-bottom: 10px; margin-bottom: 8px;">@Model.Name</h2>
 
     <div class="details-info">
         <h4>Informacje</h4>
-        <p>Data rozpoczęcia sezonu: @Model.SeasonStartDate.ToShortDateString()</p>
-        <p>Data zakończenia sezonu: @Model.SeasonEndDate?.ToShortDateString()</p>
-        <p>Gwiazda drużyny: @Model.SuperStarPlayer</p>
+         <div style="display: flex; align-items: center;">
+            <p class="gwiazda">Data rozpoczęcia sezonu: @Model.SeasonStartDate.ToShortDateString()</p>
+            <img src="~/images/progress-34.png" alt="Gwiazda" style="width: 34px; height: 34px; margin-bottom:18px;">
+         </div>
+          <div style="display: flex; align-items: center;">
+            <p class="gwiazda">Data zakończenia sezonu: @Model.SeasonEndDate?.ToShortDateString()</p>
+            <img src="~/images/calender-32.png" alt="kalendarz" style="width: 34px; height: 34px; margin-bottom:18px;">
+          </div>
+        <div style="display: flex; align-items: center;">
+            <p class="gwiazda">Gwiazda drużyny: @Model.SuperStarPlayer</p>
+            <img src="~/images/star-30.png" alt="Gwiazda" style="width: 30px; height: 30px; margin-bottom:18px;">
+        </div>
         <div class="details-info-description">
             <p>Historia: <br /> @Model.Description</p>
         </div>

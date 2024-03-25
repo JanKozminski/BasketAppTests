@@ -2,15 +2,22 @@
 
 @section Styles {
     <link rel="stylesheet" href="~/css/current-teams-styles.css" />
+    <link rel="icon" type="image/png" href="~/images/team2-80.png">
 }
+
+
 <div class="card mt-3">
-<h2>Aktualne Drużyny</h2>
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <h2>Aktualne Drużyny</h2> <img src="~/images/team2-80.png" alt="Drużna koszykarska" style="width: 80px; height: 80px;">
+    </div>
+    <br />
 
 <h4> Kliknij na nazwę drużyny, aby zobaczyć aktualny roster!</h4>
+<br />
 
-<table class="table current-teams-table">
+<table class="team-table">
     <thead>
-        <tr>
+        <tr >
             <th>Nazwa</th>
             <th>Miasto</th>
             <th>Konferencja</th>
@@ -18,6 +25,7 @@
             <th>Dywizja</th>
         </tr>
     </thead>
+    <br>
     <tbody>
     @foreach (var team in Model)
     {

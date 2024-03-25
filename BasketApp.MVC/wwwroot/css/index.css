@@ -8,6 +8,7 @@ h2 {
 }
 
 
+
 body {
     background-color: #f8f9fa; 
     color: #212529; 
@@ -83,11 +84,21 @@ input, textarea, select {
     line-height: 1.6; 
 }
 
+.nav-link.dropdown-toggle {
+    background-color: #1ac45e;
+    border-radius: 20px;
+    color: #fff !important;
+}
 
-.navbar-nav .nav-item .nav-link {
+.nav-link {
+    margin-right: 30px;
+}
+
+.navbar-nav .nav-item {
     font-size: 18px;
     font-weight: bold;
-    margin-right: 15px;
+    margin-right: 30px;
+    padding-right: 4px;
     color: #fffcfc !important;
 }
 .navbar-brand {
@@ -95,6 +106,23 @@ input, textarea, select {
     padding-right: 40px;
     margin-right: 40px;
 }
+.nav-item:not(:last-child) {
+    border-right: 0.2px solid #fcfcfc; 
+}
+
+.nav-link.dropdown-toggle:hover,
+.nav-link.dropdown-toggle:focus {
+    color: #fff !important;
+    background-color: #1ac45e;
+}
+.dropdown-menu a.dropdown-item {
+    color: #0c0d0d !important;
+}
+    .dropdown-menu a.dropdown-item:hover,
+    .dropdown-menu a.dropdown-item:focus {
+        background-color: #0056b3 !important; 
+        color: #fff !important; 
+    }
 
 
 .left-aligned-container .card-body, .left-aligned-container .card-body p {

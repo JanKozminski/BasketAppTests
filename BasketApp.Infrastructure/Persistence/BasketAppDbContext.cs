@@ -1,4 +1,5 @@
 ﻿using BasketApp.Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BasketApp.Infrastructure.Persistence
 {
-    public class BasketAppDbContext : DbContext
+    public class BasketAppDbContext : IdentityDbContext
     {
         public BasketAppDbContext(DbContextOptions<BasketAppDbContext> options) : base(options) {
             
@@ -31,6 +32,8 @@ namespace BasketApp.Infrastructure.Persistence
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            base.OnModelCreating(modelBuilder);
             
 
             modelBuilder.Entity<PlayerHistoryLink>()

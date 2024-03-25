@@ -2,11 +2,14 @@
 
 @section Styles {
     <link rel="stylesheet" href="~/css/historical-teams-styles.css" />
+    <link rel="icon" type="image/png" href="~/images/trophy-64.png">
 }
 <div class="card mt-3">
-<h2 class="historical-teams-header">Historyczne Drużyny</h2>
+
+    <h2 class="historical-teams-header">Historyczne Drużyny <img src="~/images/trophy-64.png" alt="Złote trofeum" style="width:64px; height:64px;"></h2>
 
 <h4>Kliknij w nazwę, aby dowiedzieć się więcej o drużynie!</h4>
+<br />
 
 <ul class="historical-teams-list">
     @foreach (var team in Model)

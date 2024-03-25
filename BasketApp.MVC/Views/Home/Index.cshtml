@@ -1,9 +1,32 @@
-﻿@{
+﻿@section Styles {
+    <link rel="icon" type="image/png" href="~/images/mini-bal-48.png">
+    <link rel="stylesheet" href="~/css/index.css" />
+}
+
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
+<head>
+    <style>
+        #koszykowka{
+            font-size: 56px;
+            font-weight: 300;
+            line-height: 1.2;
+            margin-left: 10px;
+            margin-right:10px;
+        }
+    </style>
+</head>
+
 <div class="text-center">
-    <h1 class="display-4">SERWIS INFORMACYJNY DLA MIŁOŚNIKÓW KOSZYKÓWKI</h1>
+    <h1 class="display-4">SERWIS INFORMACYJNY DLA MIŁOŚNIKÓW </h1>
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <img src="~/images/mini-bal-48.png" alt="mała piłka do kosza" style="width: 48px; height: 48px;">
+       <h1 id="koszykowka"> KOSZYKÓWKI </h1>
+        <img src="~/images/mini-bal-48.png" alt="mała piłka do kosza" style="width: 48px; height: 48px;"></h1>
+    </div>
 </div>
 
 

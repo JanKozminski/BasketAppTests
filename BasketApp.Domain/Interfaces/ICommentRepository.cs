@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace BasketApp.Domain.Interfaces
 {
-    public interface IGameService
+    public interface ICommentRepository
     {
-
-        Task Create(Domain.Entities.Game game);
-        Task<IEnumerable<Game>> GetAllGamesAsync();
+        Task AddCommentAsync(Comment comment);
+        Task<IEnumerable<Comment>> GetCommentsByGameIdAsync(int gameId);
     }
 }

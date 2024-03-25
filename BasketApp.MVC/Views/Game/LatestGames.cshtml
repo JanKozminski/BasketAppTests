@@ -3,12 +3,66 @@
 
 @section Styles {
     <link rel="stylesheet" href="~/css/latest-games.css" />
+    <link rel="stylesheet" href="~/css/partial-comment-styles.css" />
+    <link rel="icon" type="image/png" href="~/images/court-78.png">
 }
 @{
     ViewData["Title"] = "Najnowsze Gry";
+    
 }
 
-<h1>@ViewData["Title"]</h1>
+@{
+    if (TempData["AlertMessage"] != null)
+    {
+        <div class="alert alert-warning" role="alert">
+            @Html.Raw(TempData["AlertMessage"]?.ToString())
+            <a href="@Url.Page("/Account/Login", new { area = "Identity" })" class="alert-link">zaloguj się</a>.
+        </div>
+    }
+}
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.view-comments-btn').click(function () {
+                var gameId = $(this).data('game-id');
+                var commentsContainer = $('#comments-for-game-' + gameId);
+
+                if (commentsContainer.is(':empty')) {
+                    $.ajax({
+                        url: '@Url.Action("ViewComments", "Game")',
+                        type: 'GET',
+                        data: { gameId: gameId },
+                        success: function (data) {
+                            commentsContainer.html(data).slideDown();
+                        },
+                        error: function () {
+                            alert('Nie udało się załadować komentarzy.');
+                        }
+                    });
+                } else {
+                    commentsContainer.slideToggle(); 
+                }
+            });
+        });
+    </script>
+}
+
+
+
+
+<div style="display: flex; justify-content: center; align-items: center; border-bottom: 1px solid black; padding-bottom: 10px; margin-bottom: 8px;">
+    <h1 style="margin-right: 19px;">@ViewData["Title"]</h1>
+    <img src="~/images/court-78.png" alt="Małe boisko do koszykówki" style="width: 78px; height: 78px;">
+</div>
+
+
+
+
+
+<br />
+<br />
+<br />
 
 <a href="@Url.Action("Create", "Game")" class="btn btn-primary mb-3">Stwórz grę</a>
 
@@ -28,7 +82,22 @@
                     </p>
                     <p class="card-text description-separator">Wynik: @game.FinalScore</p>
                     <p class="card-text description-separator">@game.Description</p>
+                    <p type="hidden" class="card-text description-separator"></p>
+                    <br>
 
+                    <form asp-action="AddComment" method="post">
+                        <input type="hidden" name="GameId" value="@game.Id" />
+                        <div class="form-group">
+                            <textarea name="Text" class="form-control" placeholder="Dodaj komentarz"></textarea>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Wyślij</button>
+                    </form>
+                    <br>
+                    <br>
+                    <br>
+                    <button class="btn btn-info view-comments-btn" data-game-id="@game.Id">Zobacz Komentarze</button>
+                    <div class="comments-container" id="comments-for-game-@game.Id" style="display:none;"></div>
                 </div>
             </div>
         </div>

@@ -24,10 +24,10 @@ h2 {
         text-align: left;
     }
 
-    .coach-table th {
-        background-color: #aa5704;
-        color: white;
-    }
+.coach-table th {
+    background-color: #2b2b2b;
+    color: white;
+}
 
     .coach-table tr:nth-child(odd) {
         background-color: #f2f2f2;

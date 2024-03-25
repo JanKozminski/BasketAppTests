@@ -4,12 +4,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasketApp.MVC", "BasketApp.MVC\BasketApp.MVC.csproj", "{3F43DE74-56CD-4908-80EA-63D9C74F5C9D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{142F12F1-9371-4C11-8224-8D599C21BAA8} = {142F12F1-9371-4C11-8224-8D599C21BAA8}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasketApp.Domain", "BasketApp.Domain\BasketApp.Domain.csproj", "{142F12F1-9371-4C11-8224-8D599C21BAA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasketApp.Domain", "BasketApp.Domain\BasketApp.Domain.csproj", "{142F12F1-9371-4C11-8224-8D599C21BAA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasketApp.Application", "BasketApp.Application\BasketApp.Application.csproj", "{5155E6DA-C622-4C65-9108-607D719B11B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasketApp.Application", "BasketApp.Application\BasketApp.Application.csproj", "{5155E6DA-C622-4C65-9108-607D719B11B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasketApp.Infrastructure", "BasketApp.Infrastructure\BasketApp.Infrastructure.csproj", "{71DD4EEA-CCEC-4ADB-B136-46C93FAA02EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasketApp.Infrastructure", "BasketApp.Infrastructure\BasketApp.Infrastructure.csproj", "{71DD4EEA-CCEC-4ADB-B136-46C93FAA02EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
